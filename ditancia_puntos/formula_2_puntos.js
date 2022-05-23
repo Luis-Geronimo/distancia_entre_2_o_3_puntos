@@ -26,11 +26,11 @@ Vue.component('form_2_puntos',{
                          <div class="row">
                            <div class="col-lg-6">
                                <label for="punto_BX2"><b>Valor de X2</b></label>
-                               <input type="number" name="punto_BX2" id="punto_AX1" class="form form-control" v-model="punto_BX2">
+                               <input  type="number" name="punto_BX2" id="punto_AX1" class="form form-control" v-model="punto_BX2">
                            </div>
                            <div class="col-lg-6">
                                <label for="punto_BY2"><b>Valor de Y2</b></label>
-                               <input type="number" name="punto_BY2" id="punto_AY1" class="form form-control" v-model="punto_BY2">
+                               <input  type="number" name="punto_BY2" id="punto_AY1" class="form form-control" v-model="punto_BY2">
                            </div>
                          </div>
                      </div>
@@ -73,21 +73,27 @@ Vue.component('form_2_puntos',{
                     <div class="card-body">
                         <div class="row">
                         
-                            <div class="col-lg-12">
+                            <div class="col-lg-5">
                                 <div class="text-center">
-                                <h4><b>x1: </b>{{punto_AX1}}, <b>y1: </b>{{punto_AY1}}, <b>x2: </b>{{punto_BX2}}, <b>y2: </b>{{punto_BY2}}<h4>
-                                <hr>
-                                <h4>d: (A,B) = √({{punto_BX2}} - {{punto_AX1}})^2 + ({{punto_BY2}} - {{punto_AY1}})^2<h4>
-                                <hr>
-                                <h4>d: (A,B) = √({{resta_x=punto_BX2-punto_AX1}})^2 + ({{resta_y=punto_BY2-punto_AY1}})^2<h4>
-                                <hr>
-                                <h4>d: (A,B) = √{{suma_x=Math.pow(resta_x,2)}} + {{suma_y=Math.pow(resta_y,2)}}</h4>
-                                <hr>
-                                <h4>d: (A,B) = √{{resultado=suma_x+suma_y}}</h4>
-                                <hr>
-                                <h4>d: (A,B) = {{Math.sqrt(resultado)}}</h4>
-                             </div>
+                                    <h5><b>x1: </b>{{punto_AX1}}, <b>y1: </b>{{punto_AY1}}, <b>x2: </b>{{punto_BX2}}, <b>y2: </b>{{punto_BY2}}<h5>
+                                    <hr>
+                                    <h5>d: (A,B) = √({{punto_BX2}} - {{punto_AX1}})^2 + ({{punto_BY2}} - {{punto_AY1}})^2<h5>
+                                    <hr>
+                                    <h5>d: (A,B) = √({{resta_x=punto_BX2-punto_AX1}})^2 + ({{resta_y=punto_BY2-punto_AY1}})^2<h5>
+                                    <hr>
+                                    <h5>d: (A,B) = √{{suma_x=Math.pow(resta_x,2)}} + {{suma_y=Math.pow(resta_y,2)}}</h5>
+                                    <hr>
+                                    <h5>d: (A,B) = √{{resultado=suma_x+suma_y}}</h5>
+                                    <hr>
+                                    <h5>d: (A,B) = {{Math.sqrt(resultado)}}</h5>
+                                </div>
                             </div>
+
+                            <div class="col-lg-6">  
+                             
+                            <plano :aX="punto_AX1" :aY="punto_AY1" :bX="punto_BX2" :bY="punto_BY2" :cX="0" :cY="0" :puntos="2"></plano>  
+                             </div>
+
                         </div>
                                                 
                     </div>
@@ -113,5 +119,9 @@ Vue.component('form_2_puntos',{
             resultado:0
         }
     },
-    props:['','']
+    methods:{
+        ver_plano(){
+            this.$refs.plano
+        }
+    }
 });
